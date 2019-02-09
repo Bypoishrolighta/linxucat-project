@@ -1,7 +1,6 @@
 import requests
 import datetime
 import re
-import os
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 
@@ -19,26 +18,13 @@ def getHTMLText(url):
 
 demo = getHTMLText(url) #调用函数
 
-def downloadHtml(demo):
-    download = open("data.text", "w") #创建data.text
-    download.write(demo) #写入网页内容
-    download.close() #关闭文件
-#downloadHtml(demo)
 
-def readHtml():
-    read = open("data.text", "r") #打开文件
-    global a #定义全局变量
-    a = read.read() #读取data.text
-    read.close() #关闭文件
-
-readHtml()
-
-def getList(a):
+def getList(demo):
     global list_demo
     pattern = re.compile(r'(?<=\{)[^}]*(?=\})')#定义正则（搜索{}中的内容）
-    list_demo = pattern.findall(a) #获取list
+    list_demo = pattern.findall(demo) #获取list
 
-getList(a)
+getList(demo)
 
 def cutList():
     global list_today,list_tomorrow #定义全局变量
@@ -226,9 +212,3 @@ if __name__ == "__main__":
     MainWindow.show()                       # 执行QMainWindow的show()方法，显示这个QMainWindow
     sys.exit(app.exec_())                   # 使用exit()或者点击关闭按钮退出QApplication
 
-
-#def unlinkFile():        
-    #my_file =  'data.text'
-    #os.path.exists(my_file)
-    #os.unlink(my_file)
-#unlinkFile()
