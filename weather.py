@@ -47,16 +47,16 @@ def getWeather(list_today, list_tomorrow):
     cut_type_today = str_today[154:158]
     
     type_today = st.join(match_letter.findall(cut_type_today))
-    high_today = str(list(map(int, match_number.findall(cut_high_today)))[0])
-    low_today = str(list(map(int, match_number.findall(cut_low_today)))[0])
+    high_today = str(list(map(int, match_number.findall(cut_high_today)))[0])+'℃'
+    low_today = str(list(map(int, match_number.findall(cut_low_today)))[0])+'℃'
 
     cut_high_tomorrow = str_tomorrow[35:50]
     cut_low_tomorrow = str_tomorrow[55:64]
     cut_type_tomorrow = str_tomorrow[154:158]
 
     type_tomorrow = st.join(match_letter.findall(cut_type_tomorrow))
-    high_tomorrow = match_number.findall(cut_high_tomorrow)[0]
-    low_tomorrow = match_number.findall(cut_low_tomorrow)[0]    
+    high_tomorrow = match_number.findall(cut_high_tomorrow)[0]+'℃'
+    low_tomorrow = match_number.findall(cut_low_tomorrow)[0] +'℃'   
 
 getWeather(list_today, list_tomorrow)    
 
@@ -188,10 +188,10 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "天气"))
         self.nn.setText(_translate("MainWindow", "city：南宁"))
         self.label_26.setText(_translate("MainWindow", date))
-        self.jinrizuigaoqiwen.setText(_translate("MainWindow", "最高气温℃"))
+        self.jinrizuigaoqiwen.setText(_translate("MainWindow", "最高气温"))
         self.jinritainqi.setText(_translate("MainWindow", "今日天气"))
         self.leixingjinri.setText(_translate("MainWindow", "类型"))
-        self.jinrizuidiqiwen.setText(_translate("MainWindow", "最低气温℃"))
+        self.jinrizuidiqiwen.setText(_translate("MainWindow", "最低气温"))
         self.leixingjinri1.setText(_translate("MainWindow", type_today))
         self.jinrizuigao1.setText(_translate("MainWindow", high_today))
         self.jinrizuidi1.setText(_translate("MainWindow", low_today))
@@ -199,10 +199,10 @@ class Ui_MainWindow(object):
         self.kong_2.setText(_translate("MainWindow", ''))
         self.leixingmingri1.setText(_translate("MainWindow", type_tomorrow))
         self.mingrizuidi1.setText(_translate("MainWindow", low_tomorrow))
-        self.mingrizuigao.setText(_translate("MainWindow", "最高气温℃"))
+        self.mingrizuigao.setText(_translate("MainWindow", "最高气温"))
         self.mingri.setText(_translate("MainWindow", "明日天气"))
         self.mingrileixing.setText(_translate("MainWindow", "类型"))
-        self.mingrizuidi.setText(_translate("MainWindow", "最低气温℃"))
+        self.mingrizuidi.setText(_translate("MainWindow", "最低气温"))
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)  # 创建一个QApplication，也就是你要开发的软件app
